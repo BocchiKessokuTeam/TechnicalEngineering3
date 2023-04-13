@@ -12,11 +12,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.world.item.CreativeModeTab;
 import ten3.core.client.HudSpanner;
 import ten3.core.network.Network;
-import ten3.init.BlockInit;
-import ten3.init.ContInit;
-import ten3.init.ItemInit;
-import ten3.init.RecipeInit;
-import ten3.init.TileInit;
+import ten3.init.*;
 import ten3.lib.item.ItemGroupProvider;
 
 public class TechnicalEngineering implements ModInitializer, ClientModInitializer {
@@ -37,7 +33,7 @@ public class TechnicalEngineering implements ModInitializer, ClientModInitialize
 	public void onInitializeClient(ModContainer mod) {
 		ContInit.regClient();
 		// TODO
-		// FluidInit.clientInit();
+		FluidInit.clientInit();
 		HudRenderCallback.EVENT.register(HudSpanner::onRender);
 		Network.registerClient();
 	}
