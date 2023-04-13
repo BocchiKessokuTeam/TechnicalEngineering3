@@ -1,7 +1,6 @@
 package ten3.init;
 
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
@@ -84,11 +83,11 @@ public class BlockInit {
 	}
 
 	public static void regBlock(String id, Block im) {
-		Registry.register(BuiltInRegistries.BLOCK, TConst.asResource(id), im);
+		Registry.register(Registry.BLOCK, TConst.asResource(id), im);
 	}
 
 	public static Block getBlock(String id) {
-		return BuiltInRegistries.BLOCK.get(TConst.asResource(id));
+		return Registry.BLOCK.get(TConst.asResource(id));
 	}
 
 }

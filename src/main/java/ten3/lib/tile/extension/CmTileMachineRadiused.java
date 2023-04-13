@@ -13,8 +13,7 @@ public abstract class CmTileMachineRadiused extends CmTileMachineEffect {
     }
 
     @Override
-    public void resetAll()
-    {
+    public void resetAll() {
         super.resetAll();
         radius = initialRadius;
     }

@@ -30,7 +30,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ItemStack;
@@ -43,12 +43,7 @@ public class FluidTagEmiIngredient implements EmiIngredient {
 	private final long amount;
 
 	public FluidTagEmiIngredient(TagKey<Fluid> key, long amount) {
-		this(key,
-				BuiltInRegistries.FLUID.getTag(key).isPresent()
-						? BuiltInRegistries.FLUID.getTag(key).get().stream().map(holder -> EmiStack.of(holder.value()))
-								.toList()
-						: List.of(),
-				amount);
+		this(key, Registry.FLUID.getTag(key).isPresent() ? Registry.FLUID.getTag(key).get().stream().map(holder -> EmiStack.of(holder.value())).toList() : List.of(), amount);
 	}
 
 	public FluidTagEmiIngredient(TagKey<Fluid> key, List<EmiStack> stacks, long amount) {
@@ -74,8 +69,28 @@ public class FluidTagEmiIngredient implements EmiIngredient {
 	}
 
 	@Override
+	public EmiIngredient copy() {
+		return null;
+	}
+
+	@Override
 	public long getAmount() {
 		return amount;
+	}
+
+	@Override
+	public EmiIngredient setAmount(long amount) {
+		return null;
+	}
+
+	@Override
+	public float getChance() {
+		return 0;
+	}
+
+	@Override
+	public EmiIngredient setChance(float chance) {
+		return null;
 	}
 
 	@Override

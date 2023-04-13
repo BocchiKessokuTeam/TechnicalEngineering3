@@ -9,7 +9,7 @@ import com.google.gson.JsonObject;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -122,7 +122,7 @@ public class FormsCombinedIngredient {
 
 	private static Item parseItem(String i) {
 		ResourceLocation rl = new ResourceLocation(i);
-		Optional<Item> item = BuiltInRegistries.ITEM.getOptional(rl);
+		Optional<Item> item = Registry.ITEM.getOptional(rl);
 		if (item.isPresent() && item.get() != Items.AIR) {
 			return item.get();
 		}
@@ -131,7 +131,7 @@ public class FormsCombinedIngredient {
 
 	private static Fluid parseFluid(String i) {
 		ResourceLocation rl = new ResourceLocation(i);
-		Optional<Fluid> fluid = BuiltInRegistries.FLUID.getOptional(rl);
+		Optional<Fluid> fluid = Registry.FLUID.getOptional(rl);
 		if (fluid.isPresent() && fluid.get() != Fluids.EMPTY) {
 			return fluid.get();
 		}

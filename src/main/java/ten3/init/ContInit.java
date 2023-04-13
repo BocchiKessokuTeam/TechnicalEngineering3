@@ -12,7 +12,6 @@ import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import ten3.TConst;
@@ -63,7 +62,7 @@ public class ContInit {
 	}
 
 	public static void regCont(String id) {
-		Registry.register(BuiltInRegistries.MENU, TConst.asResource(id),
+		Registry.register(Registry.MENU, TConst.asResource(id),
 				new ExtendedScreenHandlerType<>((windowId, inv, data) -> {
 					BlockPos pos = data.readBlockPos();
 					return new CmContainerMachine(windowId, id,
@@ -73,11 +72,11 @@ public class ContInit {
 	}
 
 	public static MenuType<?> getType(String id) {
-		return BuiltInRegistries.MENU.get(TConst.asResource(id));
+		return Registry.MENU.get(TConst.asResource(id));
 	}
 
 	public static boolean hasType(String id) {
-		return BuiltInRegistries.MENU.getOptional(TConst.asResource(id)).isPresent();
+		return Registry.MENU.getOptional(TConst.asResource(id)).isPresent();
 	}
 
 	static List<String> translucent = new ArrayList<>();

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import net.minecraft.core.Registry;
 import org.jetbrains.annotations.Nullable;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
@@ -14,7 +15,6 @@ import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.MutableComponent;
@@ -100,7 +100,7 @@ public abstract class CmTileMachine extends CmTileEntity {
 	public MachineReflection reflection;
 
 	public CmTileMachine(BlockPos pos, BlockState state) {
-		super(BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath(), pos, state);
+		super(Registry.BLOCK.getKey(state.getBlock()).getPath(), pos, state);
 
 		initHandlers();
 		info = new TransferManager(this);
@@ -228,7 +228,7 @@ public abstract class CmTileMachine extends CmTileEntity {
 			int i = 0;
 			for (Tank tank : tanks) {
 				long amt = tank.getAmount();
-				int id = BuiltInRegistries.FLUID.getId(tank.getResource().getFluid());
+				int id = Registry.FLUID.getId(tank.getResource().getFluid());
 				fluidAmount.set(i, (int) amt);
 				fluidData.set(i, id);
 				i++;

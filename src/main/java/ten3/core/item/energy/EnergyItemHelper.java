@@ -4,7 +4,7 @@ import static ten3.lib.tile.mac.CmTileMachine.ENERGY;
 
 import java.util.List;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -35,15 +35,15 @@ public class EnergyItemHelper {
 		return def;
 	}
 
-	public static void fillFull(Item i, FabricItemGroupEntries stacks, int sto, int rec, int ext) {
+	public static void fillFull(Item i, NonNullList<ItemStack> stacks, int sto, int rec, int ext) {
 		ItemStack full = getState(i, sto, rec, ext);
 		ItemUtil.setTag(full, "energy", sto);
-		stacks.accept(full);
+		stacks.add(full);
 	}
 
-	public static void fillEmpty(Item i, FabricItemGroupEntries stacks, int sto, int rec, int ext) {
+	public static void fillEmpty(Item i, NonNullList<ItemStack> stacks, int sto, int rec, int ext) {
 		ItemStack def = getState(i, sto, rec, ext);
-		stacks.accept(def);
+		stacks.add(def);
 	}
 
 	// MACHINES:

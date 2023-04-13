@@ -5,7 +5,7 @@ import java.util.List;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluid;
@@ -36,7 +36,7 @@ public class ElementFluid extends ElementBase {
 	}
 
 	public void update(CmContainerMachine ct) {
-		Fluid fid = BuiltInRegistries.FLUID.byId(ct.fluidData.get(id));
+		Fluid fid = Registry.FLUID.byId(ct.fluidData.get(id));
 		amount = ct.fluidAmount.get(id);
 		variant = FluidVariant.of(fid);
 		setValue(amount, ct.tile.tanks.get(id).getCapacity());

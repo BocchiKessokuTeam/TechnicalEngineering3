@@ -3,9 +3,9 @@ package ten3.init.template;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.core.Registry;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -30,7 +30,7 @@ public class DefItemBlock extends BlockItem implements ItemGroupProvider {
 
 		for (int i = 0; true; i++) {
 			// *getPATH!
-			String k = "ten3." + BuiltInRegistries.ITEM.getKey(this).getPath() + "." + i;
+			String k = "ten3." + Registry.ITEM.getKey(this).getPath() + "." + i;
 			Component ttc = KeyUtil.translated(KeyUtil.GOLD, k);
 			if (ttc.getString().equals(k))
 				break;
@@ -47,7 +47,7 @@ public class DefItemBlock extends BlockItem implements ItemGroupProvider {
 
 	@Override
 	public String getDescriptionId() {
-		return KeyUtil.getKey(BuiltInRegistries.ITEM.getKey(this).getPath());
+		return KeyUtil.getKey(Registry.ITEM.getKey(this).getPath());
 	}
 
 	@Override

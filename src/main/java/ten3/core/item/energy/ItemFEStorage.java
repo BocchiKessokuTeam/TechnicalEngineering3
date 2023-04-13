@@ -2,7 +2,7 @@ package ten3.core.item.energy;
 
 import java.util.List;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -51,9 +51,11 @@ public class ItemFEStorage extends DefItem implements SimpleEnergyItem {
 		return Mth.color(1f, 0.1f, 0.1f);
 	}
 
-	public void fillItemCategory(FabricItemGroupEntries entries) {
-		EnergyItemHelper.fillEmpty(this, entries, sto, rec, ext);
-		EnergyItemHelper.fillFull(this, entries, sto, rec, ext);
+	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> stacks) {
+		if(allowedIn(tab)) {
+			EnergyItemHelper.fillEmpty(this, stacks, sto, rec, ext);
+			EnergyItemHelper.fillFull(this, stacks, sto, rec, ext);
+		}
 	}
 
 	@Override

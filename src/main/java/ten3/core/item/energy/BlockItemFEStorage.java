@@ -4,8 +4,8 @@ import static ten3.init.template.DefItem.build;
 
 import java.util.List;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -29,7 +29,7 @@ public class BlockItemFEStorage extends DefItemBlock implements SimpleEnergyItem
 	// in game item do
 
 	private CmTileMachine getBind() {
-		return (CmTileMachine) CmTileEntity.ofType(TileInit.getType(BuiltInRegistries.ITEM.getKey(this).getPath()));
+		return (CmTileMachine) CmTileEntity.ofType(TileInit.getType(Registry.ITEM.getKey(this).getPath()));
 	}
 
 	public BlockItemFEStorage(Block b) {
@@ -68,14 +68,15 @@ public class BlockItemFEStorage extends DefItemBlock implements SimpleEnergyItem
 		return Mth.color(1f, 0.1f, 0.1f);
 	}
 
-	public void fillItemCategory(FabricItemGroupEntries entries) {
-		CmTileMachine t = getBind();
-		EnergyItemHelper.fillEmpty(this, entries, t.info.maxStorageEnergy, t.info.maxReceiveEnergy,
-				t.info.maxExtractEnergy);
+	@Override
+	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> stacks) {
+		if(allowedIn(tab)) {
+			CmTileMachine t = getBind();
+			EnergyItemHelper.fillEmpty(this, stacks, t.info.maxStorageEnergy, t.info.maxReceiveEnergy, t.info.maxExtractEnergy);
 
-		if (getBlock() instanceof Cell) {
-			EnergyItemHelper.fillFull(this, entries, t.info.maxStorageEnergy, t.info.maxReceiveEnergy,
-					t.info.maxExtractEnergy);
+			if(getBlock() instanceof Cell) {
+				EnergyItemHelper.fillFull(this, stacks, t.info.maxStorageEnergy, t.info.maxReceiveEnergy, t.info.maxExtractEnergy);
+			}
 		}
 	}
 

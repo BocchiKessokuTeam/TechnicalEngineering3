@@ -16,6 +16,7 @@ loom {
 repositories {
 	maven { url "https://api.modrinth.com/maven" }
 	maven { url "https://maven.terraformersmc.com/releases/" }
+	maven { url "https://maven.shedaniel.me/" }
     mavenCentral()
 }
 
@@ -25,6 +26,7 @@ dependencies {
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
 
 	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.qfapi_version}"
+	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated:${project.qfapi_version}"
 
     modImplementation include("maven.modrinth:forge-config-api-port:${project.forgeconfigapiport_version}")
 
@@ -36,6 +38,7 @@ dependencies {
     }
 
     modImplementation "dev.emi:emi:${project.emi_version}"
+	modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 }
 
 processResources {

@@ -6,7 +6,7 @@ import static net.minecraft.client.gui.GuiComponent.drawString;
 
 import java.util.ArrayList;
 
-import org.joml.Matrix4f;
+import com.mojang.math.Matrix4f;
 import org.lwjgl.opengl.GL11;
 
 import com.mojang.blaze3d.systems.RenderSystem;

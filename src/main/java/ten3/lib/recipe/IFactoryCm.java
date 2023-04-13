@@ -4,8 +4,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
 
-public interface IFactoryCm<T extends FormsCombinedRecipe>
-{
+public interface IFactoryCm<T extends FormsCombinedRecipe> {
 
     T create(ResourceLocation regName, ResourceLocation idIn,
              List<FormsCombinedIngredient> ip,

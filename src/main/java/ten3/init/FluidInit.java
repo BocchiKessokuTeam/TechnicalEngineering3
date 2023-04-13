@@ -5,7 +5,6 @@ import org.quiltmc.loader.api.minecraft.ClientOnly;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +26,7 @@ public class FluidInit {
 	}
 
 	public static void regFluid(String id, Fluid fluid) {
-		Registry.register(BuiltInRegistries.FLUID, TConst.asResource(id), fluid);
+		Registry.register(Registry.FLUID, TConst.asResource(id), fluid);
 	}
 
 	public static void quickRegFluid(String id, Block block, Item bucket) {
@@ -41,7 +40,7 @@ public class FluidInit {
 	}
 
 	public static Fluid getFluid(String id) {
-		return BuiltInRegistries.FLUID.get(TConst.asResource(id));
+		return Registry.FLUID.get(TConst.asResource(id));
 	}
 
 	@ClientOnly

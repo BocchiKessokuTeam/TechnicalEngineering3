@@ -19,7 +19,7 @@ public class MatchFuel {
 		if (i.getCount() <= 0 || i.isEmpty())
 			return 0;
 
-		int time = ItemContentRegistries.FUEL_TIMES.get(i.getItem()).orElse(0);
+		int time = ItemContentRegistries.FUEL_TIME.get(i.getItem()).orElse(0);
 
 		if (i.getItem() == Items.LAVA_BUCKET) {
 			return 0;

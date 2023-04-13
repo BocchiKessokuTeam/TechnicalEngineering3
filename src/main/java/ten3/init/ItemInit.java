@@ -5,7 +5,6 @@ import static ten3.init.template.DefItem.build;
 import java.util.function.Supplier;
 
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import ten3.TConst;
 import ten3.core.item.Spanner;
@@ -157,11 +156,11 @@ public class ItemInit {
 	}
 
 	public static void regItem(String id, Supplier<Item> im) {
-		Registry.register(BuiltInRegistries.ITEM, TConst.asResource(id), im.get());
+		Registry.register(Registry.ITEM, TConst.asResource(id), im.get());
 	}
 
 	public static Item getItem(String id) {
-		return BuiltInRegistries.ITEM.get(TConst.asResource(id));
+		return Registry.ITEM.get(TConst.asResource(id));
 	}
 
 }
