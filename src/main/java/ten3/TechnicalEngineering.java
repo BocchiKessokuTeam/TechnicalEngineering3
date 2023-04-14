@@ -25,7 +25,7 @@ public class TechnicalEngineering implements ModInitializer, ClientModInitialize
 		ItemInit.regAll();
 		RecipeInit.regAll();
 		Network.register();
-		initItemGroups();
+		//initItemGroups();
 	}
 
 	@ClientOnly
@@ -33,7 +33,7 @@ public class TechnicalEngineering implements ModInitializer, ClientModInitialize
 	public void onInitializeClient(ModContainer mod) {
 		ContInit.regClient();
 		// TODO
-		FluidInit.clientInit();
+		//FluidInit.clientInit();
 		HudRenderCallback.EVENT.register(HudSpanner::onRender);
 		Network.registerClient();
 	}
@@ -42,11 +42,6 @@ public class TechnicalEngineering implements ModInitializer, ClientModInitialize
 		List<CreativeModeTab> tabs = Registry.ITEM.stream()
 				.filter(item -> item instanceof ItemGroupProvider p && p.getTab() != null)
 				.map(item -> ((ItemGroupProvider) item).getTab()).toList();
-
-		tabs.forEach(tab -> ItemGroupEvents.modifyEntriesEvent(tab)
-				.register(e -> Registry.ITEM.stream()
-						.filter(item -> item instanceof ItemGroupProvider p && p.getTab() == tab)
-						.forEachOrdered(e::accept)));
 	}
 
 }
